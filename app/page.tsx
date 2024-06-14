@@ -1,6 +1,6 @@
-import TaxCalculatorForm from "./components/TaxCalculatorForm/TaxCalculatorForm";
+import TaxCalculatorForm from "@/app/components/TaxCalculatorForm/TaxCalculatorForm";
 import { Typography, Grid } from "@mui/material";
-import { taxYearValues } from "./constants/taxYears";
+import { taxYearValues } from "@/app/constants/taxYears";
 export default function Home() {
   return (
     <Grid container justifyContent={"center"} marginTop={"50px"}>
