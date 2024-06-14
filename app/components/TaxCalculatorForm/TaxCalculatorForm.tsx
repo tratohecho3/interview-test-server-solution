@@ -2,7 +2,7 @@
 import { useForm } from "react-hook-form";
 import { Button, FormLabel, Grid } from "@mui/material";
 import { SelectElement, TextFieldElement } from "react-hook-form-mui";
-import { TaxYearValue } from "@/app/types/taxYears";
+import { TaxYearValue } from "@/app/types/taxes";
 import { getIncomeTax } from "@/app/actions/getIncomeTax";
 // This is a fixed list, we can remove it if backend can handle more years or business logic changes
 export type TaxCalculatorFormProps = { taxYearValues: TaxYearValue[] };
