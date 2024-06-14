@@ -1,10 +1,19 @@
 import { Taxes } from "@/app/types/taxes";
-import { useFormState, useFormStatus } from "react-dom";
-import { Skeleton, Grid, Paper, Typography } from "@mui/material";
+import { useFormStatus } from "react-dom";
+import { Skeleton, Grid, Paper, Typography, Alert } from "@mui/material";
+import { FormState } from "@/app/types/response";
 
-export type TaxesBreakdownProps = { taxes: Taxes };
-export const TaxesBreakdown = ({ taxes }: TaxesBreakdownProps) => {
+export type TaxesBreakdownProps = { taxes: Taxes; formState: FormState };
+export const TaxesBreakdown = ({ taxes, formState }: TaxesBreakdownProps) => {
   const { pending } = useFormStatus();
+
+  if (formState.status === "failed" && !pending) {
+    return (
+      <Alert severity="error" sx={{ marginTop: "20px" }}>
+        An error has ocurred. Please Try Again
+      </Alert>
+    );
+  }
 
   if (pending) {
     return (
@@ -19,7 +28,7 @@ export const TaxesBreakdown = ({ taxes }: TaxesBreakdownProps) => {
     return null;
   }
   return (
-    <Grid container>
+    <Grid container marginTop={"20px"}>
       <Grid item xs={12}>
         <Paper elevation={3} sx={{ padding: "30px" }}>
           <Grid container justifyContent={"space-between"}>

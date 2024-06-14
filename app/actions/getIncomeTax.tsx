@@ -7,15 +7,23 @@ export async function getIncomeTax(
   currentState: FormState,
   formData: FormData
 ): Promise<FormState> {
-  const response = await fetch(
-    `${API_BASE_URL}${API_TAX_BRACKETS_ENDPOINT}/${formData.get("taxYear")}`
-  );
-  const { tax_brackets: taxBrackets = [] } = await response.json();
-  if (taxBrackets.length === 0) {
-    // return error
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}${API_TAX_BRACKETS_ENDPOINT}/${formData.get("taxYear")}`
+    );
+    const { tax_brackets: taxBrackets = [] } = await response.json();
+    if (taxBrackets.length === 0) {
+      throw new Error("");
+    }
+    return {
+      status: "success",
+      data: calculateTaxes(formData.get("grossIncome"), taxBrackets),
+    };
+  } catch (error) {
+    // This will be a perfect place to call new relic to inform about the error
+    return {
+      status: "failed",
+      data: null,
+    };
   }
-  return {
-    status: "success",
-    data: calculateTaxes(formData.get("grossIncome"), taxBrackets),
-  };
 }
