@@ -70,6 +70,14 @@ export const TaxesBreakdown = ({ taxes, formState }: TaxesBreakdownProps) => {
               {taxes.totalTaxes}
             </Typography>
           </Grid>
+          <Grid container justifyContent={"space-between"} marginTop={"10px"}>
+            <Typography variant="h6" sx={{ display: "inline" }}>
+              Effective rate
+            </Typography>
+            <Typography variant="h6" sx={{ display: "inline" }}>
+              {`${taxes.effectiveRate * 100}%`}
+            </Typography>
+          </Grid>
         </Paper>
       </Grid>
     </Grid>
