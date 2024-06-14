@@ -4,3 +4,12 @@ export type TaxBracket = {
   max?: number;
   rate: number;
 };
+export type TaxDetails = {
+  band: string;
+  tax: number;
+};
+export type Taxes = {
+  totalTaxes: number;
+  taxDetails: TaxDetails[];
+  effectiveRate: number;
+};

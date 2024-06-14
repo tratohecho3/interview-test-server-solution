@@ -1,9 +1,12 @@
 import { TaxBracket } from "@/app/types/taxes";
-
-export const calculateTaxes = (income: number, taxBrackets: TaxBracket[]) => {
+import { Taxes } from "@/app/types/taxes";
+export const calculateTaxes = (
+  income: number,
+  taxBrackets: TaxBracket[]
+): Taxes => {
   let totalTaxes = 0;
 
-  const taxDetails: { band: string; tax: number }[] = [];
+  const taxDetails = [];
 
   for (const bracket of taxBrackets) {
     if (income > bracket.min) {

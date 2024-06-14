@@ -4,6 +4,9 @@ import { Button, FormLabel, Grid } from "@mui/material";
 import { SelectElement, TextFieldElement } from "react-hook-form-mui";
 import { TaxYearValue } from "@/app/types/taxes";
 import { getIncomeTax } from "@/app/actions/getIncomeTax";
+import { useFormState, useFormStatus } from "react-dom";
+import { FormState } from "@/app/types/response";
+import { TaxesBreakdown } from "../TaxesBreakdown/TaxesBreakdown";
 // This is a fixed list, we can remove it if backend can handle more years or business logic changes
 export type TaxCalculatorFormProps = { taxYearValues: TaxYearValue[] };
 export interface FormValues {
@@ -12,12 +15,19 @@ export interface FormValues {
 }
 
 const TaxCalculatorForm = ({ taxYearValues }: TaxCalculatorFormProps) => {
-  const { handleSubmit, control } = useForm<FormValues>();
-  const onSubmit = () => {};
+  const { control } = useForm<FormValues>();
+  const initialState = {
+    status: null,
+    data: null,
+  };
+  const [formState, formAction] = useFormState<FormState, FormData>(
+    getIncomeTax,
+    initialState
+  );
 
   return (
     <>
-      <form action={getIncomeTax}>
+      <form action={formAction}>
         <Grid container gap={1}>
           <Grid item md={3} xs={12}>
             <FormLabel component="legend">Enter your gross income</FormLabel>
@@ -49,6 +59,9 @@ const TaxCalculatorForm = ({ taxYearValues }: TaxCalculatorFormProps) => {
             <Button type="submit" variant="contained">
               Calculate
             </Button>
+          </Grid>
+          <Grid item xs={12}>
+            <TaxesBreakdown taxes={formState.data} />
           </Grid>
         </Grid>
       </form>
