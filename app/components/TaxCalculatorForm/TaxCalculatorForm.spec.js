@@ -4,8 +4,6 @@ import userEvent from "@testing-library/user-event";
 
 const mockFormAction = jest.fn();
 
-global.fetch = jest.fn();
-
 jest.mock("react-dom", () => ({
   ...jest.requireActual("react-dom"),
   useFormState: () => {
@@ -21,9 +19,6 @@ describe("TaxCalculatorForm", () => {
     taxYearValues: ["2019", "2020"],
   };
 
-  beforeEach(() => {
-    fetch.mockClear();
-  });
   it("should get and submit user input data", async () => {
     const user = userEvent.setup();
     const { getByRole, getByText, findByRole, findAllByRole } = render(
