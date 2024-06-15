@@ -3,6 +3,11 @@ import { useFormStatus } from "react-dom";
 import { Skeleton, Grid, Paper, Typography, Alert } from "@mui/material";
 import { FormState } from "@/app/types/response";
 
+const formatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+});
+
 export type TaxesBreakdownProps = { taxes: Taxes | null; formState: FormState };
 export const TaxesBreakdown = ({ taxes, formState }: TaxesBreakdownProps) => {
   const { pending } = useFormStatus();
@@ -57,7 +62,7 @@ export const TaxesBreakdown = ({ taxes, formState }: TaxesBreakdownProps) => {
                   variant="h6"
                   sx={{ display: "inline", color: "grey.600" }}
                 >
-                  {tax}
+                  {formatter.format(tax)}
                 </Typography>
               </Grid>
             );
@@ -67,7 +72,7 @@ export const TaxesBreakdown = ({ taxes, formState }: TaxesBreakdownProps) => {
               Total tax
             </Typography>
             <Typography variant="h6" sx={{ display: "inline" }}>
-              {taxes.totalTaxes}
+              {formatter.format(taxes.totalTaxes)}
             </Typography>
           </Grid>
           <Grid container justifyContent={"space-between"} marginTop={"10px"}>
