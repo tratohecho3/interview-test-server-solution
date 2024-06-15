@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --testPathPattern=app/",
-    "test:e2e": "playwright test --project=chromium"
+    "test:e2e": "playwright test --project=chromium --headed"
   },
   "dependencies": {
     "@emotion/cache": "^11.11.0",

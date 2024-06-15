@@ -38,7 +38,7 @@ const TaxCalculatorForm = ({ taxYearValues }: TaxCalculatorFormProps) => {
               required
             ></TextFieldElement>
           </Grid>
-          <Grid item md={3} xs={12}>
+          <Grid item md={3} xs={12} aria-label="dropdown-tax-year">
             <FormLabel component="legend">Enter the tax year</FormLabel>
             <SelectElement
               name="taxYear"
@@ -55,7 +55,11 @@ const TaxCalculatorForm = ({ taxYearValues }: TaxCalculatorFormProps) => {
           </Grid>
 
           <Grid item xs={12} marginTop={"10px"}>
-            <Button type="submit" variant="contained">
+            <Button
+              type="submit"
+              variant="contained"
+              aria-label="submit-button"
+            >
               Calculate
             </Button>
           </Grid>

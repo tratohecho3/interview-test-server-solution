@@ -34,7 +34,7 @@ describe("TaxCalculatorForm", () => {
     expect(options).toBeTruthy();
     expect(options.length).toEqual(2);
     await user.click(options[1]);
-    const submitButton = getByRole("button", { name: "Calculate" });
+    const submitButton = getByRole("button", { name: "submit-button" });
     await user.click(submitButton);
     // Not working, there are some warnings on this test because it's still experimental react
     // https://github.com/vercel/next.js/issues/54757
