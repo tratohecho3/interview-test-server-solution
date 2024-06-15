@@ -7,6 +7,9 @@ import { getIncomeTax } from "@/app/actions/getIncomeTax";
 import { useFormState } from "react-dom";
 import { FormState } from "@/app/types/response";
 import { TaxesBreakdown } from "../TaxesBreakdown/TaxesBreakdown";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { TaxCalculatorFormSchema } from "@/app/lib/zod/TaxCalculatorFormSchema";
+
 // This is a fixed list, we can remove it if backend can handle more years or business logic changes
 export type TaxCalculatorFormProps = { taxYearValues: TaxYearValue[] };
 export interface FormValues {
@@ -15,7 +18,13 @@ export interface FormValues {
 }
 
 const TaxCalculatorForm = ({ taxYearValues }: TaxCalculatorFormProps) => {
-  const { control } = useForm<FormValues>();
+  const {
+    control,
+    formState: { isValid },
+  } = useForm<FormValues>({
+    mode: "all",
+    resolver: zodResolver(TaxCalculatorFormSchema),
+  });
   const initialState = {
     status: null,
     data: null,
@@ -59,6 +68,7 @@ const TaxCalculatorForm = ({ taxYearValues }: TaxCalculatorFormProps) => {
               type="submit"
               variant="contained"
               aria-label="submit-button"
+              disabled={!isValid}
             >
               Calculate
             </Button>
