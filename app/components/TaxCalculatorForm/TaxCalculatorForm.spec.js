@@ -36,7 +36,9 @@ describe("TaxCalculatorForm", () => {
     await user.click(options[1]);
     const submitButton = getByRole("button", { name: "Calculate" });
     await user.click(submitButton);
-    // Not working
+    // Not working, there are some warnings on this test because it's still experimental react
+    // https://github.com/vercel/next.js/issues/54757
+    // TODO: Fix it with newer version of react/next
     // expect(mockFormAction).toHaveBeenCalled();
   });
 });
