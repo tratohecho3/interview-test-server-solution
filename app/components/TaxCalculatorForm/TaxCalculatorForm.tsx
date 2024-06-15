@@ -24,7 +24,6 @@ const TaxCalculatorForm = ({ taxYearValues }: TaxCalculatorFormProps) => {
     getIncomeTax,
     initialState
   );
-
   return (
     <>
       <form action={formAction}>

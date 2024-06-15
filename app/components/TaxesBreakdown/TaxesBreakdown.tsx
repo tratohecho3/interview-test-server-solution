@@ -3,7 +3,7 @@ import { useFormStatus } from "react-dom";
 import { Skeleton, Grid, Paper, Typography, Alert } from "@mui/material";
 import { FormState } from "@/app/types/response";
 
-export type TaxesBreakdownProps = { taxes: Taxes; formState: FormState };
+export type TaxesBreakdownProps = { taxes: Taxes | null; formState: FormState };
 export const TaxesBreakdown = ({ taxes, formState }: TaxesBreakdownProps) => {
   const { pending } = useFormStatus();
 
