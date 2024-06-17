@@ -49,7 +49,7 @@ npm run test:e2e
 
 # Glossary
 
-- [Forms](aps/docs/forms.md)
-- [Server Actions](aps/docs/serverActions.md)
-- [Styling](aps/docs/styling.md)
-- [Testing](aps/docs/testing.md)
+- [Forms](app/docs/forms.md)
+- [Server Actions](app/docs/serverActions.md)
+- [Styling](app/docs/styling.md)
+- [Testing](app/docs/testing.md)
