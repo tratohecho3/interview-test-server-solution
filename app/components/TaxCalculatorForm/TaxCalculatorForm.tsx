@@ -6,7 +6,7 @@ import { TaxYearValue } from "@/app/types/taxes";
 import { getIncomeTax } from "@/app/actions/getIncomeTax";
 import { useFormState } from "react-dom";
 import { FormState } from "@/app/types/response";
-import { TaxesBreakdown } from "../TaxesBreakdown/TaxesBreakdown";
+import TaxesBreakdown from "@/app/components/TaxesBreakdown/TaxesBreakdown";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TaxCalculatorFormSchema } from "@/app/lib/zod/TaxCalculatorFormSchema";
 
@@ -74,7 +74,7 @@ const TaxCalculatorForm = ({ taxYearValues }: TaxCalculatorFormProps) => {
             </Button>
           </Grid>
           <Grid item xs={12}>
-            <TaxesBreakdown taxes={formState.data} formState={formState} />
+            <TaxesBreakdown formState={formState} />
           </Grid>
         </Grid>
       </form>

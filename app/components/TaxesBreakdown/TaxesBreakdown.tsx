@@ -8,11 +8,11 @@ const formatter = new Intl.NumberFormat("en-US", {
   currency: "USD",
 });
 
-export type TaxesBreakdownProps = { taxes: Taxes | null; formState: FormState };
-export const TaxesBreakdown = ({ taxes, formState }: TaxesBreakdownProps) => {
+export type TaxesBreakdownProps = { formState: FormState };
+const TaxesBreakdown = ({ formState }: TaxesBreakdownProps) => {
+  const { data: taxes, status } = formState;
   const { pending } = useFormStatus();
-
-  if (formState.status === "failed" && !pending) {
+  if (status === "failed" && !pending) {
     return (
       <Alert severity="error" sx={{ marginTop: "20px" }}>
         An error has ocurred. Please Try Again
@@ -88,3 +88,5 @@ export const TaxesBreakdown = ({ taxes, formState }: TaxesBreakdownProps) => {
     </Grid>
   );
 };
+
+export default TaxesBreakdown;
