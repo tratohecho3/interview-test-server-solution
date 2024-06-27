@@ -13,7 +13,8 @@ export async function getIncomeTax(
     // validate and extract data
     const { taxYear, grossIncome } = TaxCalculatorFormSchema.parse(formData);
     const response = await fetch(
-      `${API_BASE_URL}${API_TAX_BRACKETS_ENDPOINT}/${taxYear}`
+      `${API_BASE_URL}${API_TAX_BRACKETS_ENDPOINT}/${taxYear}`,
+      { cache: "force-cache" }
     );
     const { tax_brackets: taxBrackets = [] } = await response.json();
     if (taxBrackets.length === 0) {

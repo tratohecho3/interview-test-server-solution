@@ -1,4 +1,3 @@
-import { Taxes } from "@/app/types/taxes";
 import { useFormStatus } from "react-dom";
 import { Skeleton, Grid, Paper, Typography, Alert } from "@mui/material";
 import { FormState } from "@/app/types/response";
