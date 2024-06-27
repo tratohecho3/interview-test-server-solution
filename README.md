@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 In order to run the API locally, please follow these instructions:
 
-First run the docker deamon and then run these commands
+First run the docker daemon and then run these commands
 
 ```bash
 docker pull ptsdocker16/interview-test-server
